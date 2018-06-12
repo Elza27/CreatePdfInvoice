@@ -129,7 +129,8 @@ public class Generate implements Initializable {
 
     @FXML
     public void generateHtml(ActionEvent event) throws DocumentException, IOException{
-        File htmlF = new File("C:/Users/Eliza/Documents/ProjektFAKTURY/szablon/szablon.html");
+
+        File htmlF = readTemplate(prod1, prod2, prod3, prod4, prod5);
         String htmlString = FileUtils.readFileToString(htmlF);
         String nameSText = nameS.getText();
         String nipSText = nipS.getText();
@@ -151,62 +152,71 @@ public class Generate implements Initializable {
         htmlString = htmlString.replace("$mailN", mailNText);
 
 
-        Product product1 = findProduct(prod1,il1,c1,v1);
-        htmlString = htmlString.replace("$product1", product1.name);
-        htmlString = htmlString.replace("$amount1", product1.il);
-        htmlString = htmlString.replace("$jm1", mailNText);
-        htmlString = htmlString.replace("$netto1", product1.c);
-        htmlString = htmlString.replace("$amNetto1", product1.amount);
-        htmlString = htmlString.replace("$pV1", product1.v);
-        htmlString = htmlString.replace("$priceVAT1", product1.priceVat);
-        htmlString = htmlString.replace("$total1", product1.totalPrice);
+        if (!prod5.getText().isEmpty()) {
+            Product product1 = findProduct(prod1,il1,c1,v1);
+            htmlString = htmlString.replace("$product1", product1.name);
+            htmlString = htmlString.replace("$amount1", product1.il);
+            htmlString = htmlString.replace("$jm1", mailNText);
+            htmlString = htmlString.replace("$netto1", product1.c);
+            htmlString = htmlString.replace("$amNetto1", product1.amount);
+            htmlString = htmlString.replace("$pV1", product1.v);
+            htmlString = htmlString.replace("$priceVAT1", product1.priceVat);
+            htmlString = htmlString.replace("$total1", product1.totalPrice);
+        }
+       
+        if (!prod2.getText().isEmpty()) {
+            Product product2 = findProduct(prod2, il2, c2, v2);
+            htmlString = htmlString.replace("$product2", product2.name);
+            htmlString = htmlString.replace("$amount2", product2.il);
+            htmlString = htmlString.replace("$jm2", mailNText);
+            htmlString = htmlString.replace("$netto2", product2.c);
+            htmlString = htmlString.replace("$amNetto2", product2.amount);
+            htmlString = htmlString.replace("$pV2", product2.v);
+            htmlString = htmlString.replace("$priceVAT2", product2.priceVat);
+            htmlString = htmlString.replace("$total2", product2.totalPrice);
+        }
 
+        if (!prod3.getText().isEmpty()) {
+            Product product3 = findProduct(prod3, il3, c3, v3);
+            htmlString = htmlString.replace("$product3", product3.name);
+            htmlString = htmlString.replace("$amount3", product3.il);
+            htmlString = htmlString.replace("$jm3", mailNText);
+            htmlString = htmlString.replace("$netto3", product3.c);
+            htmlString = htmlString.replace("$amNetto3", product3.amount);
+            htmlString = htmlString.replace("$pV3", product3.v);
+            htmlString = htmlString.replace("$priceVAT3", product3.priceVat);
+            htmlString = htmlString.replace("$total3", product3.totalPrice);
+        }
 
-        Product product2 = findProduct(prod2, il2, c2, v2);
-        htmlString = htmlString.replace("$product2", product2.name);
-        htmlString = htmlString.replace("$amount2", product2.il);
-        htmlString = htmlString.replace("$jm2", mailNText);
-        htmlString = htmlString.replace("$netto2", product2.c);
-        htmlString = htmlString.replace("$amNetto2", product2.amount);
-        htmlString = htmlString.replace("$pV2", product2.v);
-        htmlString = htmlString.replace("$priceVAT2", product2.priceVat);
-        htmlString = htmlString.replace("$total2", product2.totalPrice);
+        if (!prod4.getText().isEmpty()) {
+            Product product4 = findProduct(prod4, il4, c4, v4);
+            htmlString = htmlString.replace("$product4", product4.name);
+            htmlString = htmlString.replace("$amount4", product4.il);
+            htmlString = htmlString.replace("$jm4", mailNText);
+            htmlString = htmlString.replace("$netto4", product4.c);
+            htmlString = htmlString.replace("$amNetto4", product4.amount);
+            htmlString = htmlString.replace("$pV4", product4.v);
+            htmlString = htmlString.replace("$priceVAT4", product4.priceVat);
+            htmlString = htmlString.replace("$total4", product4.totalPrice);
+        }
 
-        Product product3 = findProduct(prod3, il3, c3, v3);
-        htmlString = htmlString.replace("$product3", product3.name);
-        htmlString = htmlString.replace("$amount3", product3.il);
-        htmlString = htmlString.replace("$jm3", mailNText);
-        htmlString = htmlString.replace("$netto3", product3.c);
-        htmlString = htmlString.replace("$amNetto3", product3.amount);
-        htmlString = htmlString.replace("$pV3", product3.v);
-        htmlString = htmlString.replace("$priceVAT3", product3.priceVat);
-        htmlString = htmlString.replace("$total3", product3.totalPrice);
+        if (!prod5.getText().isEmpty()) {
+            Product product5 = findProduct(prod5, il5, c5, v5);
+            htmlString = htmlString.replace("$product5", product5.name);
+            htmlString = htmlString.replace("$amount5", product5.il);
+            htmlString = htmlString.replace("$jm5", mailNText);
+            htmlString = htmlString.replace("$netto5", product5.c);
+            htmlString = htmlString.replace("$amNetto5", product5.amount);
+            htmlString = htmlString.replace("$pV5", product5.v);
+            htmlString = htmlString.replace("$priceVAT5", product5.priceVat);
+            htmlString = htmlString.replace("$total5", product5.totalPrice);
+        }
 
-        Product product4 = findProduct(prod4, il4, c4, v4);
-        htmlString = htmlString.replace("$product4", product4.name);
-        htmlString = htmlString.replace("$amount4", product4.il);
-        htmlString = htmlString.replace("$jm4", mailNText);
-        htmlString = htmlString.replace("$netto4", product4.c);
-        htmlString = htmlString.replace("$amNetto4", product4.amount);
-        htmlString = htmlString.replace("$pV4", product4.v);
-        htmlString = htmlString.replace("$priceVAT4", product4.priceVat);
-        htmlString = htmlString.replace("$total4", product4.totalPrice);
-
-        Product product5 = findProduct(prod5, il5, c5, v5);
-        htmlString = htmlString.replace("$product5", product5.name);
-        htmlString = htmlString.replace("$amount5", product5.il);
-        htmlString = htmlString.replace("$jm5", mailNText);
-        htmlString = htmlString.replace("$netto5", product5.c);
-        htmlString = htmlString.replace("$amNetto5", product5.amount);
-        htmlString = htmlString.replace("$pV5", product5.v);
-        htmlString = htmlString.replace("$priceVAT5", product5.priceVat);
-        htmlString = htmlString.replace("$total5", product5.totalPrice);
-
-        File newHtmlFile = new File("C:/Users/Eliza/Documents/ProjektFAKTURY/szablon/szablon1.html");
+        File newHtmlFile = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon1.html");
         FileUtils.writeStringToFile(newHtmlFile, htmlString);
 
-        ByteArrayInputStream html = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("C:/Users/Eliza/Documents/ProjektFAKTURY/szablon/szablon1.html")));
-        ByteArrayInputStream css = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("C:/Users/Eliza/Documents/ProjektFAKTURY/szablon/style.css")));
+        ByteArrayInputStream html = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon1.html")));
+        ByteArrayInputStream css = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("C:/Users/Eliza/Documents/Faktury/szablon/style.css")));
 
         Document document = new Document();
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("pdf1.pdf"));
@@ -217,6 +227,30 @@ public class Generate implements Initializable {
 
     }
 
+    public File readTemplate(TextField p1, TextField p2, TextField p3, TextField p4, TextField p5){
+        if (p2.getText().isEmpty()){
+            File htmlF = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon_na1.html");
+            return htmlF;
+        }
+        else if (p3.getText().isEmpty())
+        {
+            File htmlF = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon_na2.html");
+            return htmlF;
+        }
+        else if (p4.getText().isEmpty())
+        {
+            File htmlF = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon_na3.html");
+            return htmlF;
+        }
+        else if (p5.getText().isEmpty()){
+            File htmlF = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon_na4.html");
+            return htmlF;
+        }
+        else {
+            File htmlF = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon.html");
+            return htmlF;
+        }
+    }
 
     public int getInt(String test){
         try{

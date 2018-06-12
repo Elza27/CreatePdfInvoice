@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML to API - Invoice</title>
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'/>
+	<!-- <link rel="stylesheet" href="sass/main.css" media="screen" charset="utf-8"/> -->
+	<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+	<meta http-equiv="content-type" content="text-html; charset=utf-8"/>
+</head>
+
+<body>
+	<header class="clearfix">
+		<div class="container">
+			<div class="company-address">
+				<p>SPRZEDAWCA:</p>
+				<h2 class="title">$nameS</h2>
+				<p>$nipS</p>
+				<p>$addressS</p>
+				<p>$mailS</p>
+			</div>
+		</div>
+	</header>
+
+	<section>
+		<div class="container">
+			<div class="details clearfix">
+				<div class="client left">
+					<p>NABYWCA:</p>
+					<p class="name">$nameN</p>
+					<p>$addressN</p>
+					<p>$nipN</p>
+					<p>$mailN</p>
+				</div>
+				<div class="data right">
+					<div class="title">$number</div>
+					<div class="date">
+						Data wystawienia: $actualDate<br />
+						Termin płatności: $paymentDate
+					</div>
+				</div>
+			</div>
+
+			<table border="0" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th class="desc">Nazwa towaru/usługi</th>
+						<th class="qty">Ilość</th>
+						<th class="unit">JM</th>
+						<th class="total">Cena netto</th>
+						<th class="total">Wartość netto</th>
+						<th class="total">Stawka VAT</th>
+						<th class="total">Kwota VAT</th>
+						<th class="total">Wartość z VAT</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="desc"><h3>$product1</h3>$specyfication1</td>
+						<td class="qty">$amount1</td>
+						<td class="unit">$jm1</td>
+						<td class="total">$netto1</td>
+						<td class="total">$amNetto1</td>
+						<td class="total">$pV1</td>
+						<td class="total">$priceVAT1</td>
+						<td class="total">$total1</td>
+					</tr>
+				</tbody>
+				<tbody>
+					<tr>
+						<td class="desc"><h3>$product2</h3>$specyfication1</td>
+						<td class="qty">$amount2</td>
+						<td class="unit">$jm2</td>
+						<td class="total">$netto2</td>
+						<td class="total">$amNetto2</td>
+						<td class="total">$pV2</td>
+						<td class="total">$priceVAT2</td>
+						<td class="total">$total2</td>
+					</tr>
+				</tbody>
+				<tbody>
+					<tr>
+						<td class="desc"><h3>$product3</h3>$specyfication1</td>
+						<td class="qty">$amount3</td>
+						<td class="unit">$jm3</td>
+						<td class="total">$netto3</td>
+						<td class="total">$amNetto3</td>
+						<td class="total">$pV3</td>
+						<td class="total">$priceVAT3</td>
+						<td class="total">$total3</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="no-break">
+				<table class="grand-total">
+					<tbody>
+						<tr>
+							<td class="desc"></td>
+							<td class="qty"></td>
+							<td class="unit">Łącznie netto:</td>
+							<td class="total">$allNetto</td>
+						</tr>
+						<tr>
+							<td class="desc"></td>
+							<td class="qty"></td>
+							<td class="unit">Podatek:</td>
+							<td class="total">$tax</td>
+						</tr>
+						<tr>
+							<td class="desc"></td>
+							<td class="unit" colspan="2">RAZEM:</td>
+							<td class="total">$all</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<div class="thanks">Thank you!</div>
+			<div class="notice">
+				<div>NOTICE:</div>
+				<div>A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+			</div>
+			<div class="end">Invoice was created on a computer and is valid without the signature and seal.</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>
