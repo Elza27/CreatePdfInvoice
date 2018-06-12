@@ -18,13 +18,12 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class Generate implements Initializable {
-
     @FXML
     private TextField nameS;
     @FXML
@@ -242,26 +241,28 @@ public class Generate implements Initializable {
         String cText = c.getText();
         Float c1Number = Float.parseFloat(cText);
         String vText = v.getText();
+        BigDecimal vDec = new BigDecimal(vText);
 
         Integer v1 = getInt(vText);
         Float amount1 = c1Number*il1;
-        //amount1 = roundTwoDecimals(amount1);
         Float Vat1 = (float)v1/100;
-        //Vat1 = roundTwoDecimals(Vat1);
         Float priceVat1 = Vat1 * amount1;
-        //priceVat1 = roundTwoDecimals(priceVat1);
         Float total1 = amount1 + priceVat1;
-        //total1 = roundTwoDecimals(total1);
-        String VatText = Float.toString(Vat1);
-        String amountText = Float.toString(amount1);
-        String priceVatText = Float.toString(priceVat1);
-        String totalText = Float.toString(total1);
+
+        BigDecimal totalDec = new BigDecimal(Float.toString(total1));
+        BigDecimal amountDec= new BigDecimal(Float.toString(amount1));
+        BigDecimal priceVatDec = new BigDecimal(Float.toString(priceVat1));
+
+        String amountText = amountDec.setScale(2,RoundingMode.HALF_UP).toString();
+        String priceVatText = priceVatDec.setScale(2,RoundingMode.HALF_UP).toString();
+        String totalText = totalDec.setScale(2, RoundingMode.HALF_UP).toString();
+        String vDecText = vDec.setScale(2,RoundingMode.HALF_UP).toString();
 
         Product product = new Product();
         product.name = prodText;
         product.c = cText;
         product.il = ilText;
-        product.v = vText;
+        product.v = vDecText;
         product.amount = amountText;
         product.priceVat = priceVatText;
         product.totalPrice = totalText;
