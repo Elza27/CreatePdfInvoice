@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Generate">
+   <center>
+      <BorderPane prefHeight="456.0" prefWidth="649.0" BorderPane.alignment="CENTER">
+         <top>
+            <Label prefHeight="41.0" prefWidth="186.0" text="Faktura VAT" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Label>
+         </top>
+         <center>
+            <SplitPane dividerPositions="0.5" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="50.0" prefWidth="100.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Sprzedawca" />
+                        <TextField fx:id="nameS" layoutX="83.0" layoutY="10.0" prefHeight="25.0" prefWidth="193.0" />
+                        <TextField fx:id="nipS" layoutX="83.0" layoutY="39.0" prefHeight="25.0" prefWidth="193.0" />
+                        <Label layoutX="14.0" layoutY="79.0" prefHeight="17.0" prefWidth="39.0" text="Adres" />
+                        <TextField fx:id="addressS" layoutX="83.0" layoutY="68.0" prefHeight="39.0" prefWidth="193.0" />
+                        <Label layoutX="14.0" layoutY="43.0" prefHeight="17.0" prefWidth="39.0" text="NIP" />
+                        <Label layoutX="14.0" layoutY="116.0" prefHeight="17.0" prefWidth="39.0" text="E-mail" />
+                        <TextField fx:id="mailS" layoutX="83.0" layoutY="112.0" prefHeight="25.0" prefWidth="193.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="220.0" prefWidth="299.0">
+                     <children>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Nabywca" />
+                              <TextField fx:id="nameN" layoutX="83.0" layoutY="10.0" prefHeight="25.0" prefWidth="193.0" />
+                              <TextField fx:id="nipN" layoutX="83.0" layoutY="39.0" prefHeight="25.0" prefWidth="193.0" />
+                              <Label layoutX="14.0" layoutY="79.0" prefHeight="17.0" prefWidth="39.0" text="Adres" />
+                              <TextField fx:id="addressN" layoutX="83.0" layoutY="68.0" prefHeight="39.0" prefWidth="193.0" />
+                              <Label layoutX="14.0" layoutY="43.0" prefHeight="17.0" prefWidth="39.0" text="NIP" />
+                              <Label layoutX="14.0" layoutY="116.0" prefHeight="17.0" prefWidth="39.0" text="E-mail" />
+                              <TextField fx:id="mailN" layoutX="83.0" layoutY="112.0" prefHeight="25.0" prefWidth="193.0" />
+                           </children>
+                        </AnchorPane>
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </center>
+         <bottom>
+            <GridPane prefHeight="250.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="317.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.0" minWidth="0.0" prefWidth="85.0" />
+                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="0.0" prefWidth="84.0" />
+                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="0.0" prefWidth="77.0" />
+                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.0" minWidth="10.0" prefWidth="88.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Nazwa" />
+                  <Label text="Ilość" GridPane.columnIndex="1" />
+                  <Label text="JM" GridPane.columnIndex="2" />
+                  <Label text="Cena netto" GridPane.columnIndex="3" />
+                  <Label text="Stawka VAT" GridPane.columnIndex="4" />
+                  <TextField fx:id="prod1" GridPane.rowIndex="1" />
+                  <TextField fx:id="il1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="c1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="v1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <TextField fx:id="prod2" GridPane.rowIndex="2" />
+                  <TextField fx:id="il2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                    </items>
+                  </SplitMenuButton>
+                  <TextField fx:id="c2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <TextField fx:id="v2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <TextField fx:id="prod3" GridPane.rowIndex="3" />
+                  <TextField fx:id="il3" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="c3" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="v3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <TextField fx:id="prod4" GridPane.rowIndex="4" />
+                  <TextField fx:id="il4" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="c4" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <TextField fx:id="v4" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <TextField fx:id="prod5" GridPane.rowIndex="5" />
+                  <TextField fx:id="il5" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="c5" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <TextField fx:id="v5" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <TextField fx:id="prod6" GridPane.rowIndex="6" />
+                  <TextField fx:id="prod7" GridPane.rowIndex="7" />
+                  <TextField fx:id="il6" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="il7" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <TextField fx:id="c6" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <TextField fx:id="v6" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <TextField fx:id="c7" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                  <TextField fx:id="v7" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                     </items>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                     </items>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                     </items>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                     </items>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                     </items>
+                  </SplitMenuButton>
+                  <SplitMenuButton mnemonicParsing="false" text="            " GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="szt." />
+                        <MenuItem mnemonicParsing="false" text="godz." />
+                        <MenuItem mnemonicParsing="false" text="usł." />
+                        <MenuItem mnemonicParsing="false" text="m" />
+                        <MenuItem mnemonicParsing="false" text="m2" />
+                        <MenuItem mnemonicParsing="false" text="kW" />
+                     </items>
+                  </SplitMenuButton>
+               </children>
+            </GridPane>
+         </bottom>
+      </BorderPane>
+   </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#generateHtml" text="Generuj" BorderPane.alignment="CENTER" />
+   </bottom>
+   <top>
+      <AnchorPane prefHeight="27.0" prefWidth="652.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutY="1.0" mnemonicParsing="false" onAction="#backStart" text="Strona startowa" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>
