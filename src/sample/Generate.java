@@ -11,9 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
-
 import java.io.*;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -21,6 +19,8 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Generate implements Initializable {
@@ -81,7 +81,7 @@ public class Generate implements Initializable {
     @FXML
     private TextField v5;
 
-    class Product{
+    public class Product{
         String name;
         String il;
         String c;
@@ -141,6 +141,12 @@ public class Generate implements Initializable {
         String addressNText = addressN.getText();
         String mailNText = mailN.getText();
 
+        Date currentDate = new Date();
+        SimpleDateFormat ft =
+                new SimpleDateFormat ("dd.MM.yyyy");
+        //String currentDateText = currentDate.toString();
+        htmlString = htmlString.replace("$actualDate", ft.format(currentDate));
+
 
         htmlString = htmlString.replace("$nameS", nameSText);
         htmlString = htmlString.replace("$nipS", nipSText);
@@ -152,7 +158,7 @@ public class Generate implements Initializable {
         htmlString = htmlString.replace("$mailN", mailNText);
 
 
-        if (!prod5.getText().isEmpty()) {
+        if (!prod1.getText().isEmpty()) {
             Product product1 = findProduct(prod1,il1,c1,v1);
             htmlString = htmlString.replace("$product1", product1.name);
             htmlString = htmlString.replace("$amount1", product1.il);
@@ -162,55 +168,108 @@ public class Generate implements Initializable {
             htmlString = htmlString.replace("$pV1", product1.v);
             htmlString = htmlString.replace("$priceVAT1", product1.priceVat);
             htmlString = htmlString.replace("$total1", product1.totalPrice);
-        }
-       
-        if (!prod2.getText().isEmpty()) {
-            Product product2 = findProduct(prod2, il2, c2, v2);
-            htmlString = htmlString.replace("$product2", product2.name);
-            htmlString = htmlString.replace("$amount2", product2.il);
-            htmlString = htmlString.replace("$jm2", mailNText);
-            htmlString = htmlString.replace("$netto2", product2.c);
-            htmlString = htmlString.replace("$amNetto2", product2.amount);
-            htmlString = htmlString.replace("$pV2", product2.v);
-            htmlString = htmlString.replace("$priceVAT2", product2.priceVat);
-            htmlString = htmlString.replace("$total2", product2.totalPrice);
+            htmlString = htmlString.replace("$allNetto", product1.amount);
+            htmlString = htmlString.replace("$tax", product1.priceVat);
+            htmlString = htmlString.replace("$all", product1.totalPrice);
+
+
+            if (!prod2.getText().isEmpty()) {
+                Product product2 = findProduct(prod2, il2, c2, v2);
+                htmlString = htmlString.replace("$product2", product2.name);
+                htmlString = htmlString.replace("$amount2", product2.il);
+                htmlString = htmlString.replace("$jm2", mailNText);
+                htmlString = htmlString.replace("$netto2", product2.c);
+                htmlString = htmlString.replace("$amNetto2", product2.amount);
+                htmlString = htmlString.replace("$pV2", product2.v);
+                htmlString = htmlString.replace("$priceVAT2", product2.priceVat);
+                htmlString = htmlString.replace("$total2", product2.totalPrice);
+                Float amount = Float.parseFloat(product1.amount) + Float.parseFloat(product2.amount);
+                BigDecimal amountDec = new BigDecimal(Float.toString(amount));
+                String amountText =  amountDec.setScale(2,RoundingMode.HALF_UP).toString();
+                Float priceVat = Float.parseFloat(product1.priceVat) + Float.parseFloat(product2.priceVat);
+                BigDecimal priceVatDec = new BigDecimal(Float.toString(priceVat));
+                String priceVatText = priceVatDec.setScale(2,RoundingMode.HALF_UP).toString() ;
+                Float totalPrice = Float.parseFloat(product1.totalPrice) + Float.parseFloat(product2.totalPrice);
+                BigDecimal totalPriceDec = new BigDecimal(Float.toString(totalPrice));
+                String totalPriceText = totalPriceDec.setScale(2,RoundingMode.HALF_UP).toString();
+                htmlString = htmlString.replace("$allNetto", amountText);
+                htmlString = htmlString.replace("$tax", priceVatText);
+                htmlString = htmlString.replace("$all", totalPriceText);
+
+                if (!prod3.getText().isEmpty()) {
+                    Product product3 = findProduct(prod3, il3, c3, v3);
+                    htmlString = htmlString.replace("$product3", product3.name);
+                    htmlString = htmlString.replace("$amount3", product3.il);
+                    htmlString = htmlString.replace("$jm3", mailNText);
+                    htmlString = htmlString.replace("$netto3", product3.c);
+                    htmlString = htmlString.replace("$amNetto3", product3.amount);
+                    htmlString = htmlString.replace("$pV3", product3.v);
+                    htmlString = htmlString.replace("$priceVAT3", product3.priceVat);
+                    htmlString = htmlString.replace("$total3", product3.totalPrice);
+                    amount = amount +Float.parseFloat(product3.amount);
+                    amountDec = new BigDecimal(Float.toString(amount));
+                    amountText =  amountDec.setScale(2,RoundingMode.HALF_UP).toString();
+                    priceVat = priceVat + Float.parseFloat(product3.priceVat);
+                    priceVatDec = new BigDecimal(Float.toString(priceVat));
+                    priceVatText = priceVatDec.setScale(2,RoundingMode.HALF_UP).toString() ;
+                    totalPrice = totalPrice + Float.parseFloat(product3.totalPrice);
+                    totalPriceDec = new BigDecimal(Float.toString(totalPrice));
+                    totalPriceText = totalPriceDec.setScale(2,RoundingMode.HALF_UP).toString();
+                    htmlString = htmlString.replace("$allNetto", amountText);
+                    htmlString = htmlString.replace("$tax", priceVatText);
+                    htmlString = htmlString.replace("$all", totalPriceText);
+
+                    if (!prod4.getText().isEmpty()) {
+                        Product product4 = findProduct(prod4, il4, c4, v4);
+                        htmlString = htmlString.replace("$product4", product4.name);
+                        htmlString = htmlString.replace("$amount4", product4.il);
+                        htmlString = htmlString.replace("$jm4", mailNText);
+                        htmlString = htmlString.replace("$netto4", product4.c);
+                        htmlString = htmlString.replace("$amNetto4", product4.amount);
+                        htmlString = htmlString.replace("$pV4", product4.v);
+                        htmlString = htmlString.replace("$priceVAT4", product4.priceVat);
+                        htmlString = htmlString.replace("$total4", product4.totalPrice);
+                        amount = amount+Float.parseFloat(product4.amount);
+                        amountDec = new BigDecimal(Float.toString(amount));
+                        amountText =  amountDec.setScale(2,RoundingMode.HALF_UP).toString();
+                        priceVat = priceVat + Float.parseFloat(product4.priceVat);
+                        priceVatDec = new BigDecimal(Float.toString(priceVat));
+                        priceVatText = priceVatDec.setScale(2,RoundingMode.HALF_UP).toString() ;
+                        totalPrice = totalPrice + Float.parseFloat(product4.totalPrice);
+                        totalPriceDec = new BigDecimal(Float.toString(totalPrice));
+                        totalPriceText = totalPriceDec.setScale(2,RoundingMode.HALF_UP).toString();
+                        htmlString = htmlString.replace("$allNetto", amountText);
+                        htmlString = htmlString.replace("$tax", priceVatText);
+                        htmlString = htmlString.replace("$all", totalPriceText);
+
+                        if (!prod5.getText().isEmpty()) {
+                            Product product5 = findProduct(prod5, il5, c5, v5);
+                            htmlString = htmlString.replace("$product5", product5.name);
+                            htmlString = htmlString.replace("$amount5", product5.il);
+                            htmlString = htmlString.replace("$jm5", mailNText);
+                            htmlString = htmlString.replace("$netto5", product5.c);
+                            htmlString = htmlString.replace("$amNetto5", product5.amount);
+                            htmlString = htmlString.replace("$pV5", product5.v);
+                            htmlString = htmlString.replace("$priceVAT5", product5.priceVat);
+                            htmlString = htmlString.replace("$total5", product5.totalPrice);
+                            amount = amount + Float.parseFloat(product5.amount);
+                            amountDec = new BigDecimal(Float.toString(amount));
+                            amountText =  amountDec.setScale(2,RoundingMode.HALF_UP).toString();
+                            priceVat = priceVat + Float.parseFloat(product5.priceVat);
+                            priceVatDec = new BigDecimal(Float.toString(priceVat));
+                            priceVatText = priceVatDec.setScale(2,RoundingMode.HALF_UP).toString() ;
+                            totalPrice = totalPrice + Float.parseFloat(product5.totalPrice);
+                            totalPriceDec = new BigDecimal(Float.toString(totalPrice));
+                            totalPriceText = totalPriceDec.setScale(2,RoundingMode.HALF_UP).toString();
+                            htmlString = htmlString.replace("$allNetto", amountText);
+                            htmlString = htmlString.replace("$tax", priceVatText);
+                            htmlString = htmlString.replace("$all", totalPriceText);
+                        }
+                    }
+                }
+            }
         }
 
-        if (!prod3.getText().isEmpty()) {
-            Product product3 = findProduct(prod3, il3, c3, v3);
-            htmlString = htmlString.replace("$product3", product3.name);
-            htmlString = htmlString.replace("$amount3", product3.il);
-            htmlString = htmlString.replace("$jm3", mailNText);
-            htmlString = htmlString.replace("$netto3", product3.c);
-            htmlString = htmlString.replace("$amNetto3", product3.amount);
-            htmlString = htmlString.replace("$pV3", product3.v);
-            htmlString = htmlString.replace("$priceVAT3", product3.priceVat);
-            htmlString = htmlString.replace("$total3", product3.totalPrice);
-        }
-
-        if (!prod4.getText().isEmpty()) {
-            Product product4 = findProduct(prod4, il4, c4, v4);
-            htmlString = htmlString.replace("$product4", product4.name);
-            htmlString = htmlString.replace("$amount4", product4.il);
-            htmlString = htmlString.replace("$jm4", mailNText);
-            htmlString = htmlString.replace("$netto4", product4.c);
-            htmlString = htmlString.replace("$amNetto4", product4.amount);
-            htmlString = htmlString.replace("$pV4", product4.v);
-            htmlString = htmlString.replace("$priceVAT4", product4.priceVat);
-            htmlString = htmlString.replace("$total4", product4.totalPrice);
-        }
-
-        if (!prod5.getText().isEmpty()) {
-            Product product5 = findProduct(prod5, il5, c5, v5);
-            htmlString = htmlString.replace("$product5", product5.name);
-            htmlString = htmlString.replace("$amount5", product5.il);
-            htmlString = htmlString.replace("$jm5", mailNText);
-            htmlString = htmlString.replace("$netto5", product5.c);
-            htmlString = htmlString.replace("$amNetto5", product5.amount);
-            htmlString = htmlString.replace("$pV5", product5.v);
-            htmlString = htmlString.replace("$priceVAT5", product5.priceVat);
-            htmlString = htmlString.replace("$total5", product5.totalPrice);
-        }
 
         File newHtmlFile = new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon1.html");
         FileUtils.writeStringToFile(newHtmlFile, htmlString);
@@ -252,22 +311,6 @@ public class Generate implements Initializable {
         }
     }
 
-    public int getInt(String test){
-        try{
-            return Integer.parseInt(test.trim());
-        }catch(Exception e){
-            return 0;
-        }
-    }
-
-    public void backStart(ActionEvent event) throws IOException {
-        Parent fParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        Scene fScene = new Scene(fParent, 650, 600);
-        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(fScene);
-        appStage.show();
-    }
-
     public Product findProduct(TextField prod, TextField il, TextField c, TextField v){
         String prodText = prod.getText();
         String ilText = il.getText();
@@ -303,6 +346,23 @@ public class Generate implements Initializable {
 
         return product;
     }
+
+    public int getInt(String test){
+        try{
+            return Integer.parseInt(test.trim());
+        }catch(Exception e){
+            return 0;
+        }
+    }
+
+    public void backStart(ActionEvent event) throws IOException {
+        Parent fParent = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene fScene = new Scene(fParent, 650, 600);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(fScene);
+        appStage.show();
+    }
+
 
 }
 
