@@ -1,4 +1,8 @@
 package sample;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.tool.xml.XMLWorkerFontProvider;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +24,7 @@ import com.itextpdf.tool.xml.XMLWorkerHelper;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
@@ -55,6 +60,9 @@ public class Generate implements Initializable {
     @FXML private TextField v4;
     @FXML private TextField v5;
     @FXML private DatePicker date;
+    @FXML private TextField id;
+
+    //public static final String FONT = "C:/Users/Eliza/Documents/Faktury/FreeSans.ttf";
 
     public class Product{
         String name;
@@ -105,6 +113,8 @@ public class Generate implements Initializable {
     @FXML
     public void generateHtml(ActionEvent event) throws DocumentException, IOException{
 
+
+
         File htmlF = readTemplate(prod1, prod2, prod3, prod4, prod5);
         String htmlString = FileUtils.readFileToString(htmlF);
         String nameSText = nameS.getText();
@@ -115,8 +125,12 @@ public class Generate implements Initializable {
         String nipNText = nipN.getText();
         String addressNText = addressN.getText();
         String mailNText = mailN.getText();
+        String idInvoice = id.getText();
 
         Date currentDate = new Date();
+        SimpleDateFormat id = new SimpleDateFormat("MM/YYYY");
+        String idInvoiceAll = idInvoice + "/" + id.format(currentDate);
+        htmlString = htmlString.replace("$number", idInvoiceAll);
         SimpleDateFormat ft =
                 new SimpleDateFormat ("yyyy-MM-dd");
         htmlString = htmlString.replace("$actualDate", ft.format(currentDate));
@@ -252,11 +266,13 @@ public class Generate implements Initializable {
 
         ByteArrayInputStream html = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("C:/Users/Eliza/Documents/Faktury/szablon/szablon1.html")));
         ByteArrayInputStream css = new ByteArrayInputStream(FileUtils.readFileToByteArray(new File("C:/Users/Eliza/Documents/Faktury/szablon/style.css")));
-
+        //Font font1 = FontFactory.getFont (FONT, "Cp1251", BaseFont.EMBEDDED);
         Document document = new Document();
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("pdf1.pdf"));
         writer.setInitialLeading(12);
         document.open();
+        //XMLWorkerFontProvider fontImp = new XMLWorkerFontProvider(XMLWorkerFontProvider.DONTLOOKFORFONTS);
+        //fontImp.register(FONT);
         XMLWorkerHelper.getInstance().parseXHtml(writer, document, html, css);
         document.close();
 
