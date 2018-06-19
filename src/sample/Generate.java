@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -20,66 +21,40 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class Generate implements Initializable {
-    @FXML
-    private TextField nameS;
-    @FXML
-    private TextField nipS;
-    @FXML
-    private TextField addressS;
-    @FXML
-    private TextField mailS;
-    @FXML
-    private TextField nameN;
-    @FXML
-    private TextField nipN;
-    @FXML
-    private TextField addressN;
-    @FXML
-    private TextField mailN;
-    @FXML
-    private TextField prod1;
-    @FXML
-    private TextField prod2;
-    @FXML
-    private TextField prod3;
-    @FXML
-    private TextField prod4;
-    @FXML
-    private TextField prod5;
-    @FXML
-    private TextField il1;
-    @FXML
-    private TextField il2;
-    @FXML
-    private TextField il3;
-    @FXML
-    private TextField il4;
-    @FXML
-    private TextField il5;
-    @FXML
-    private TextField c1;
-    @FXML
-    private TextField c2;
-    @FXML
-    private TextField c3;
-    @FXML
-    private TextField c4;
-    @FXML
-    private  TextField c5;
-    @FXML
-    private TextField v1;
-    @FXML
-    private  TextField v2;
-    @FXML
-    private TextField v3;
-    @FXML
-    private TextField v4;
-    @FXML
-    private TextField v5;
+    @FXML private TextField nameS;
+    @FXML private TextField nipS;
+    @FXML private TextField addressS;
+    @FXML private TextField mailS;
+    @FXML private TextField nameN;
+    @FXML private TextField nipN;
+    @FXML private TextField addressN;
+    @FXML private TextField mailN;
+    @FXML private TextField prod1;
+    @FXML private TextField prod2;
+    @FXML private TextField prod3;
+    @FXML private TextField prod4;
+    @FXML private TextField prod5;
+    @FXML private TextField il1;
+    @FXML private TextField il2;
+    @FXML private TextField il3;
+    @FXML private TextField il4;
+    @FXML private TextField il5;
+    @FXML private TextField c1;
+    @FXML private TextField c2;
+    @FXML private TextField c3;
+    @FXML private TextField c4;
+    @FXML private  TextField c5;
+    @FXML private TextField v1;
+    @FXML private  TextField v2;
+    @FXML private TextField v3;
+    @FXML private TextField v4;
+    @FXML private TextField v5;
+    @FXML private DatePicker date;
 
     public class Product{
         String name;
@@ -143,9 +118,10 @@ public class Generate implements Initializable {
 
         Date currentDate = new Date();
         SimpleDateFormat ft =
-                new SimpleDateFormat ("dd.MM.yyyy");
-        //String currentDateText = currentDate.toString();
+                new SimpleDateFormat ("yyyy-MM-dd");
         htmlString = htmlString.replace("$actualDate", ft.format(currentDate));
+        LocalDate paymentDate = date.getValue();
+        htmlString = htmlString.replace("$paymentDate", paymentDate.toString());
 
 
         htmlString = htmlString.replace("$nameS", nameSText);

@@ -70,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Generate.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Generate.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Generate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="141" column="43" lean-forward="true" selection-start-line="141" selection-start-column="43" selection-end-line="141" selection-end-column="43" />
+            <state relative-caret-position="306">
+              <caret line="123" column="80" selection-start-line="123" selection-start-column="80" selection-end-line="123" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initialize#0;class#Generate#0" />
@@ -93,7 +93,7 @@
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file leaf-file-name="fvat.fxml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="fvat.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/out/production/ProjektFAKTURY/sample/fvat.fxml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="371">
@@ -154,8 +154,8 @@
         <option value="$PROJECT_DIR$/src/sample/fvat.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Controller.java" />
         <option value="$PROJECT_DIR$/out/production/ProjektFAKTURY/sample/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Generate.java" />
         <option value="$PROJECT_DIR$/out/production/ProjektFAKTURY/sample/fvat.fxml" />
+        <option value="$PROJECT_DIR$/src/sample/Generate.java" />
       </list>
     </option>
   </component>
@@ -368,12 +368,12 @@
       <workItem from="1528899207264" duration="132000" />
       <workItem from="1528962963454" duration="1231000" />
       <workItem from="1529080878481" duration="5358000" />
-      <workItem from="1529339343448" duration="7326000" />
+      <workItem from="1529339343448" duration="9440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102304000" />
+    <option name="totallyTimeSpent" value="104418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -429,7 +429,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Generate.java</url>
-          <line>83</line>
+          <line>58</line>
           <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -832,21 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Generate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="141" column="43" lean-forward="true" selection-start-line="141" selection-start-column="43" selection-end-line="141" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#initialize#0;class#Generate#0" />
-            <element signature="method#numeric_Validation#0;class#Generate#0" />
-            <element signature="method#readTemplate#0;class#Generate#0" />
-            <element signature="method#getInt#0;class#Generate#0" />
-            <element signature="method#backStart#0;class#Generate#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/production/ProjektFAKTURY/sample/sample.fxml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
@@ -858,6 +843,21 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Generate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="123" column="80" selection-start-line="123" selection-start-column="80" selection-end-line="123" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#Generate#0" />
+            <element signature="method#numeric_Validation#0;class#Generate#0" />
+            <element signature="method#readTemplate#0;class#Generate#0" />
+            <element signature="method#getInt#0;class#Generate#0" />
+            <element signature="method#backStart#0;class#Generate#0" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
