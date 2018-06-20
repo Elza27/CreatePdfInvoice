@@ -3,6 +3,7 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.tool.xml.XMLWorkerFontProvider;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,7 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -61,6 +64,11 @@ public class Generate implements Initializable {
     @FXML private TextField v5;
     @FXML private DatePicker date;
     @FXML private TextField id;
+    @FXML private ChoiceBox<String> jm1;
+    @FXML private ChoiceBox<String> jm2;
+    @FXML private ChoiceBox<String> jm3;
+    @FXML private ChoiceBox<String> jm4;
+    @FXML private ChoiceBox<String> jm5;
 
     //public static final String FONT = "C:/Users/Eliza/Documents/Faktury/FreeSans.ttf";
 
@@ -77,6 +85,7 @@ public class Generate implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         nipS.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
+        nipN.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
         il1.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
         il2.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
         il3.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(10));
@@ -87,6 +96,12 @@ public class Generate implements Initializable {
         v3.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(2));
         v4.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(2));
         v5.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(2));
+        id.addEventFilter(KeyEvent.KEY_TYPED, numeric_Validation(4));
+        jm1.setItems (FXCollections.observableArrayList ("szt.", "godz.", "usł.", "m", "m2", "kW"));
+        jm2.setItems (FXCollections.observableArrayList ("szt.", "godz.", "usł.", "m", "m2", "kW"));
+        jm3.setItems (FXCollections.observableArrayList ("szt.", "godz.", "usł.", "m", "m2", "kW"));
+        jm4.setItems (FXCollections.observableArrayList ("szt.", "godz.", "usł.", "m", "m2", "kW"));
+        jm5.setItems (FXCollections.observableArrayList ("szt.", "godz.", "usł.", "m", "m2", "kW"));
     }
 
     public EventHandler<KeyEvent> numeric_Validation(final Integer max_Lengh) {
@@ -112,8 +127,6 @@ public class Generate implements Initializable {
 
     @FXML
     public void generateHtml(ActionEvent event) throws DocumentException, IOException{
-
-
 
         File htmlF = readTemplate(prod1, prod2, prod3, prod4, prod5);
         String htmlString = FileUtils.readFileToString(htmlF);
@@ -146,6 +159,7 @@ public class Generate implements Initializable {
         htmlString = htmlString.replace("$nipN", nipNText);
         htmlString = htmlString.replace("$addressN", addressNText);
         htmlString = htmlString.replace("$mailN", mailNText);
+
 
 
         if (!prod1.getText().isEmpty()) {

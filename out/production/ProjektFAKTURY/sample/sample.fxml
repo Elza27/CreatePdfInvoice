@@ -33,8 +33,6 @@
          <children>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" />
           <Button layoutX="137.0" layoutY="40.0" mnemonicParsing="false" onAction="#newVAT" text="Faktura VAT" />
-            <Button layoutX="243.0" layoutY="40.0" mnemonicParsing="false" onAction="#newWithoutVAT" text="Faktura bez VAT" />
-            <Button layoutX="364.0" layoutY="40.0" mnemonicParsing="false" onAction="#newCorrect" text="Faktura korygująca" />
          </children>
       </AnchorPane>
    </center>
